@@ -1,7 +1,11 @@
 import pymongo
 import requests
 
-client = pymongo.MongoClient("mongodb+srv://apurvtyagi26:Jonty2020@cluster-blockchain-data.a0jvoed.mongodb.net/?retryWrites=true&w=majority")
+@st.experimental_singleton(suppress_st_warning=True)
+def init_connection():
+    return pymongo.MongoClient("mongodb+srv://st.secrets.db_username:st.secrets.db_password@st.secrets.cluster_name.a0jvoed.mongodb.net/?retryWrites=true&w=majority")
+
+client = init_connection()
 
 db = client["bitcoin_database"]
 collection = db["bitcoin_prices"]
