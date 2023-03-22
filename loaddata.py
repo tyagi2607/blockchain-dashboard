@@ -1,7 +1,9 @@
+import streamlit as st
 import pymongo
 import requests
 
-@st.experimental_singleton(suppress_st_warning=True)
+
+@st.cache_resource
 def init_connection():
     return pymongo.MongoClient("mongodb+srv://st.secrets.db_username:st.secrets.db_password@st.secrets.cluster_name.a0jvoed.mongodb.net/?retryWrites=true&w=majority")
 
