@@ -30,7 +30,7 @@ def main():
 
     data = []
     for document in collection.find():
-        data.append(document["bpi"]["USD"]["rate_float"])
+        data.append(document["price"])
 
     df = pd.DataFrame(data, columns=["Bitcoin Price (USD)"])
     st.table(df)
