@@ -42,6 +42,8 @@ def main():
 
     st.sidebar.title("more coins")
     st.sidebar.markdown("Welcome!!!")
+    st.sidebar.checkbox("Show Analysis", True, key=1)
+    select = st.sidebar.selectbox('Select a State',["Bitcoin"])
     st.title("Coin metrics")
     st.markdown("The dashboard will visualize the coin metrics")
     st.markdown("Details")
