@@ -1,11 +1,17 @@
+#======================================== IMPORT PACKAGES AND REASON FOR IMPORTS ====================================================================#
 import streamlit as st
 import pandas as pd
 import pymongo
 
 def main():
-    print(st.secrets.db_username)
+    # STREAMLIT: Page configuration
+    st.set_page_config(
+    page_title="morecoins",
+    page_icon="✅",
+    layout="wide",
+    )
 
-    # Connect to MongoDB
+    # FUNCTION: Connect to MongoDB
     @st.cache_resource
     def init_connection():
         # Construct connection string
@@ -33,7 +39,13 @@ def main():
         data.append(document["price"])
 
     df = pd.DataFrame(data, columns=["Bitcoin Price (USD)"])
-    st.table(df)
+
+    st.sidebar.title("more coins")
+    st.sidebar.markdown("Welcome!!!")
+    st.title("Coin metrics")
+    st.markdown("The dashboard will visualize the coin metrics")
+    st.markdown("Details")
+    st.table(df.head())
     st.line_chart(df)
 
 if __name__ == "__main__":
