@@ -19,9 +19,37 @@ def show_overview(client, coin):
 
     st.title(coin)
     st.markdown(coin)
+
+    kpi1, kpi2, kpi3 = st.columns(3)
+
+    # fill in those three columns with respective metrics or KPIs
+    kpi1.metric(
+        label="Price $",
+        value=30,
+        delta=30 - 10,
+    )
+
+    kpi2.metric(
+        label="Market cap $",
+        value=int(200),
+        delta=-200 + 10 ,
+    )
+
+    kpi3.metric(
+        label="Volumne ＄",
+        value=f"$ {round(20,2)} ",
+        delta=-round(30 / 1400) * 100,
+    )
+
     st.markdown("Details")
-    st.table(df.head())
-    st.line_chart(df)
+
+    cht1, cht2 = st.columns(2)
+    
+    cht1.table(df.head(10))
+
+    cht2.markdown("Line chart")
+    cht2.line_chart(df, y="Bitcoin Price (USD)", use_container_width=False)
+    
     
     # Display the coin overview
     st.subheader(coin)
